@@ -1,19 +1,24 @@
 {
-    "users": [
-        {
-            "id": 1,
-            "username": "a",
-            "email": "a@a.com"
-        },
-        {
-            "username": "b",
-            "email": "b@b.com",
-            "id": 2
-        },
-        {
-            "username": "c",
-            "email": "c@c.com",
-            "id": 3
-        }
-    ]
+  "users": [
+    {
+      "id": 1,
+      "username": "a",
+      "email": "a@a.com"
+    },
+    {
+      "username": "b",
+      "email": "b@b.com",
+      "id": 2
+    },
+    {
+      "username": "c",
+      "email": "c@c.com",
+      "id": 3
+    },
+    {
+      "email": "d@d.com",
+      "username": "d",
+      "id": 4
+    }
+  ]
 }

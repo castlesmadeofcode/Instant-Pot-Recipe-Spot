@@ -52,7 +52,7 @@ const ApplicationViews = props => {
           if (currentUser) {
             return <FavoriteList currentUser={currentUser} {...props} />;
           } else {
-            return <Redirect to="/recipes" />;
+            return <Redirect to="/login" />;
           }
         }}
       />
