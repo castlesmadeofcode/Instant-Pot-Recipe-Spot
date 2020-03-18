@@ -5,6 +5,7 @@ import NewUserForm from "./auth/NewUserForm";
 import RecipeList from "./recipes/RecipeList";
 import AddRecipeForm from "./recipes/AddRecipeForm";
 import EditRecipeForm from "./recipes/EditRecipeForm";
+import FavoriteList from "./favorites/FavoriteList";
 
 const ApplicationViews = props => {
   const currentUser = props.currentUser;
@@ -40,7 +41,18 @@ const ApplicationViews = props => {
           if (currentUser) {
             return <RecipeList currentUser={currentUser} {...props} />;
           } else {
-            return <Redirect to="/login" />;
+            return <Redirect to="/recipes" />;
+          }
+        }}
+      />
+      <Route
+        exact
+        path="/favorites"
+        render={props => {
+          if (currentUser) {
+            return <FavoriteList currentUser={currentUser} {...props} />;
+          } else {
+            return <Redirect to="/recipes" />;
           }
         }}
       />
