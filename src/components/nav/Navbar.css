@@ -1,0 +1,32 @@
+header {
+  background-color: rgb(16, 33, 80);
+  border-color: paleturquoise;
+}
+
+.project-title {
+  color: seashell;
+  text-align: center;
+}
+
+.navlink-container {
+  display: flex;
+  padding: 0;
+  margin-bottom: 0;
+}
+
+.navlink-container li {
+  flex: 1;
+  padding: 10px;
+  text-align: center;
+  font-size: 1.5em;
+  color: whitesmoke;
+  background-color: rgb(70, 102, 207);
+  list-style-type: none;
+  box-sizing: border-box;
+}
+
+.navlink {
+  color: whitesmoke;
+  text-decoration: underline;
+  cursor: pointer;
+}
