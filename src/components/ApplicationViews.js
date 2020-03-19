@@ -34,13 +34,7 @@ const ApplicationViews = props => {
           return <NewUserForm setAsUser={setAsUser} {...props} />;
         }}
       />
-      <Route
-        exact
-        path="/recipes"
-        render={props => {
-          return <RecipeList />;
-        }}
-      />
+
       <Route
         exact
         path="/favorites"
@@ -53,7 +47,14 @@ const ApplicationViews = props => {
         }}
       />
       <Route
-        path="/recipes/addrecipe"
+        exact
+        path="/recipes"
+        render={props => {
+          return <RecipeList {...props} />;
+        }}
+      />
+      <Route
+        path="/recipes/new"
         render={props => {
           if (currentUser) {
             return <AddRecipeForm {...props} />;
