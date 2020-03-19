@@ -64,7 +64,7 @@ const ApplicationViews = props => {
         }}
       />
       <Route
-        path="/recipe/:recipeId(\d+)/edit"
+        path="/recipes/:recipeId(\d+)/edit"
         render={props => {
           if (currentUser) {
             return <EditRecipeForm {...props} />;
