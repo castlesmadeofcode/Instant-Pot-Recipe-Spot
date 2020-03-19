@@ -22,7 +22,7 @@ const RecipesList = props => {
   // };
 
   const getAllRecipes = () => {
-    return RecipeManager.getAll().then(recipesFromAPI => {
+    return RecipeManager.getAllRecipesByUser().then(recipesFromAPI => {
       setRecipes(recipesFromAPI.reverse());
     });
   };
@@ -34,15 +34,21 @@ const RecipesList = props => {
   return (
     <>
       <section className="section-content">
-        <button
-          type="button"
-          className="btn"
-          onClick={() => {
-            props.history.push("/recipes/new");
-          }}
-        >
-          New Recipe
-        </button>
+        {props.currentUser ? (
+          <button
+            type="button"
+            className="btn"
+            onClick={() => {
+              props.history.push("/recipes/new");
+            }}
+          >
+            New Recipe
+          </button>
+        ) : (
+          <p>
+            <em></em>
+          </p>
+        )}
       </section>
       <div className="containers-cards">
         {recipes.map(recipe => (

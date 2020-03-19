@@ -50,7 +50,7 @@ const ApplicationViews = props => {
         exact
         path="/recipes"
         render={props => {
-          return <RecipeList {...props} />;
+          return <RecipeList currentUser={currentUser} {...props} />;
         }}
       />
       <Route
