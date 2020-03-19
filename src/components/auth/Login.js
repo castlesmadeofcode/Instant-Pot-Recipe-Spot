@@ -17,6 +17,7 @@ const Login = props => {
     e.preventDefault();
 
     LoginManager.getUsers().then(userArray => {
+      console.log(userArray);
       const user = userArray.find(
         el =>
           el.email === userCredentials.email &&

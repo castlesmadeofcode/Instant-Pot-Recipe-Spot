@@ -50,19 +50,19 @@ const NewUserForm = props => {
       <fieldset>
         <h3>Add a New User</h3>
         <div className="formgrid">
-          <label htmlFor="inputUserName">Username: </label>
-          <input
-            onChange={handleFieldChange}
-            type="text"
-            id="username"
-            required=""
-            autoFocus=""
-          />
           <label htmlFor="inputEmail">Email: </label>
           <input
             onChange={handleFieldChange}
             type="email"
             id="email"
+            required=""
+            autoFocus=""
+          />
+          <label htmlFor="inputUserName">Username: </label>
+          <input
+            onChange={handleFieldChange}
+            type="text"
+            id="username"
             required=""
             autoFocus=""
           />

@@ -38,11 +38,7 @@ const ApplicationViews = props => {
         exact
         path="/recipes"
         render={props => {
-          if (currentUser) {
-            return <RecipeList currentUser={currentUser} {...props} />;
-          } else {
-            return <Redirect to="/recipes" />;
-          }
+          return <RecipeList />;
         }}
       />
       <Route
