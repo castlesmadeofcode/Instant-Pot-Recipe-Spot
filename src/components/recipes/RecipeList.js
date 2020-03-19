@@ -6,15 +6,15 @@ import "./../RecipeBook.css";
 const RecipesList = props => {
   const [recipes, setRecipes] = useState([]);
 
-  //   const deleteRecipe = id => {
-  //     RecipeManager.delete(id).then(() => getUserRecipes());
-  //   };
+  const deleteRecipe = id => {
+    RecipeManager.delete(id).then(() => getAllRecipes());
+  };
 
   //   const userNow = JSON.parse(sessionStorage.getItem("userCredentials"));
 
   const getAllRecipes = () => {
     return RecipeManager.getAll().then(recipesFromAPI => {
-      setRecipes(recipesFromAPI);
+      setRecipes(recipesFromAPI.reverse());
     });
   };
 
@@ -29,7 +29,7 @@ const RecipesList = props => {
           type="button"
           className="btn"
           onClick={() => {
-            // props.history.push("/recipes/new");
+            props.history.push("/recipes/new");
           }}
         >
           New Recipe
@@ -40,7 +40,7 @@ const RecipesList = props => {
           <RecipeCard
             key={recipe.id}
             recipe={recipe}
-            // deleteRecipe={deleteRecipe}
+            deleteRecipe={deleteRecipe}
             {...props}
           />
         ))}

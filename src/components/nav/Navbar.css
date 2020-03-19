@@ -1,5 +1,5 @@
 header {
-  background-color: rgb(16, 33, 80);
+  background-color: rgb(73, 163, 156);
   border-color: paleturquoise;
 }
 
@@ -20,7 +20,7 @@ header {
   text-align: center;
   font-size: 1.5em;
   color: whitesmoke;
-  background-color: rgb(70, 102, 207);
+  background-color: rgb(104, 182, 177);
   list-style-type: none;
   box-sizing: border-box;
 }
