@@ -19,13 +19,46 @@
             "email": "d@d.com",
             "username": "d",
             "id": 4
+        },
+        {
+            "email": "e@e.com",
+            "username": "e",
+            "id": 5
         }
     ],
     "recipes": [
         {
             "id": 1,
             "userId": 1,
+            "name": "recipe0",
+            "description": "new recipe",
+            "instructions": "make the food"
+        },
+        {
+            "id": 2,
+            "userId": 1,
             "name": "recipe1",
+            "description": "new recipe",
+            "instructions": "make the food"
+        },
+        {
+            "id": 3,
+            "userId": 2,
+            "name": "recipe2",
+            "description": "new recipe",
+            "instructions": "make the food"
+        },
+        {
+            "id": 4,
+            "userId": 3,
+            "name": "recipe3",
+            "description": "new recipe",
+            "instructions": "make the food"
+        },
+        {
+            "id": 5,
+            "userId": 1,
+            "name": "recipe4",
             "description": "new recipe",
             "instructions": "make the food"
         }
