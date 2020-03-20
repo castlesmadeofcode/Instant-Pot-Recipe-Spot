@@ -1,9 +1,8 @@
 import React from "react";
 
-const userNow = JSON.parse(sessionStorage.getItem("userCredentials"));
-
 const RecipeCard = props => {
   const EditAndDeletePermission = recipe => {
+    const userNow = JSON.parse(sessionStorage.getItem("userCredentials"));
     if (recipe.userId === userNow) {
       return true;
     } else {
