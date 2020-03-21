@@ -1,16 +1,14 @@
 import React from "react";
-import FavoriteManager from "../../modules/FavoriteManager";
 
-const RecipeCard = props => {
-  console.log(props);
-  //   const EditAndDeletePermission = recipe => {
-  //     const userNow = JSON.parse(sessionStorage.getItem("userCredentials"));
-  //     if (recipe.userId === userNow) {
-  //       return true;
-  //     } else {
-  //       return false;
-  //     }
-  //   };
+const FavoriteCard = props => {
+  const EditAndDeletePermission = favorite => {
+    const userNow = JSON.parse(sessionStorage.getItem("userCredentials"));
+    if (favorite.userId === userNow) {
+      return true;
+    } else {
+      return false;
+    }
+  };
 
   return (
     <div className="cards">
@@ -22,7 +20,6 @@ const RecipeCard = props => {
         <h3>description: {props.favorite.recipe.description}</h3>
         <h3>instructions: {props.favorite.recipe.instructions}</h3>
 
-        {/* <h3>Instructions: {props.favorite.instructions}</h3> */}
         {/* {EditAndDeletePermission(props.recipe) ? (
           <button
             type="button"
@@ -30,20 +27,20 @@ const RecipeCard = props => {
               props.history.push(`/recipes/${props.recipe.id}/edit`)
             }
           >
-            Edit
+            Edit 
           </button>
-        ) : null}
-        {EditAndDeletePermission(props.recipe) ? (
+        ) : null} */}
+        {EditAndDeletePermission(props.favorite) ? (
           <button
             type="button"
-            onClick={() => props.deleteRecipe(props.recipe.id)}
+            onClick={() => props.deleteFavorite(props.favorite.id)}
           >
             Delete
           </button>
-        ) : null} */}
+        ) : null}
       </section>
     </div>
   );
 };
 
-export default RecipeCard;
+export default FavoriteCard;

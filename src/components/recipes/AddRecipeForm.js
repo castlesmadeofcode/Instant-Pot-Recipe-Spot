@@ -47,7 +47,7 @@ const AddRecipeForm = props => {
               id="name"
               placeholder="RecipeName"
             />
-            <label htmlFor="description">Date: </label>
+            <label htmlFor="description">Description: </label>
 
             <input
               type="description"
@@ -56,7 +56,7 @@ const AddRecipeForm = props => {
               id="description"
               placeholder="RecipeDate"
             />
-            <label htmlFor="instructions">Location: </label>
+            <label htmlFor="instructions">Instructions: </label>
 
             <input
               type="text"

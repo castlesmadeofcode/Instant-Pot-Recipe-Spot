@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import FavoriteCard from "./FavoriteCard";
 import FavoriteManager from "../../modules/FavoriteManager";
-// import "./../FavoriteBook.css";
+import "./../RecipeBook.css";
 
 const FavoritesList = props => {
   const [favorites, setFavorites] = useState([]);
@@ -10,18 +10,11 @@ const FavoritesList = props => {
     FavoriteManager.delete(id).then(() => getAllFavorites());
   };
 
-  //   const favoriteRecipes = () => {
-  //     FavoriteManager.getAllFavoritesByRecipe().then(favorites => {
-  //       console.log(favorites);
-  //     });
-  //   };
-  //   favoriteRecipes();
   const userNow = JSON.parse(sessionStorage.getItem("userCredentials"));
 
   const getAllFavorites = () => {
     return FavoriteManager.getAllFavoritesByRecipe().then(
       favoritesFromDatabase => {
-        console.log(favoritesFromDatabase);
         const userFavorites = favoritesFromDatabase.filter(
           favorite => favorite.userId === userNow
         );
@@ -43,7 +36,6 @@ const FavoritesList = props => {
             key={favorite.id}
             favorite={favorite}
             deleteFavorite={deleteFavorite}
-            // favoriteRecipes={favoriteRecipes}
             {...props}
           />
         ))}
