@@ -10,17 +10,6 @@ const RecipesList = props => {
     RecipeManager.delete(id).then(() => getAllRecipes());
   };
 
-  //   const userNow = JSON.parse(sessionStorage.getItem("userCredentials"));
-
-  // const getAllRecipes = () => {
-  //   return RecipeManager.getAllRecipesByUser().then(recipesFromDatabase => {
-  //     const userRecipes = recipesFromDatabase.filter(
-  //       recipe => recipe.user.id === userNow
-  //     );
-  //     setRecipes(userRecipes.reverse());
-  //   });
-  // };
-
   const getAllRecipes = () => {
     return RecipeManager.getAllRecipesByUser().then(recipesFromAPI => {
       setRecipes(recipesFromAPI.reverse());

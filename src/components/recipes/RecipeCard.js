@@ -37,6 +37,12 @@ const RecipeCard = props => {
             Delete
           </button>
         ) : null}
+        <button
+          type="button"
+          onClick={() => props.deleteRecipe(props.recipe.id)}
+        >
+          Favorite
+        </button>
       </section>
     </div>
   );

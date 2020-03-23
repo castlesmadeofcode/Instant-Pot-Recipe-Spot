@@ -20,14 +20,14 @@ const FavoriteCard = props => {
         <h3>description: {props.favorite.recipe.description}</h3>
         <h3>instructions: {props.favorite.recipe.instructions}</h3>
 
-        {/* {EditAndDeletePermission(props.recipe) ? (
+        {/* {EditAndDeletePermission(props.favorite) ? (
           <button
             type="button"
             onClick={() =>
-              props.history.push(`/recipes/${props.recipe.id}/edit`)
+              props.history.push(`/recipes/${props.favorite.id}/edit`)
             }
           >
-            Edit 
+            Edit
           </button>
         ) : null} */}
         {EditAndDeletePermission(props.favorite) ? (
