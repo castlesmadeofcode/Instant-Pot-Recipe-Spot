@@ -2,6 +2,14 @@ import React from "react";
 const userNow = JSON.parse(sessionStorage.getItem("userCredentials"));
 
 const RecipeCard = props => {
+  const IsLoggedIn = () => {
+    const userNow = JSON.parse(sessionStorage.getItem("userCredentials"));
+    if (userNow !== null) {
+      return true;
+    } else {
+      return false;
+    }
+  };
   const EditAndDeletePermission = recipe => {
     const userNow = JSON.parse(sessionStorage.getItem("userCredentials"));
     if (recipe.userId === userNow) {
@@ -38,12 +46,14 @@ const RecipeCard = props => {
             Delete
           </button>
         ) : null}
-        <button
-          type="button"
-          onClick={() => props.addFavorite(props.recipe.id, userNow)}
-        >
-          Favorite
-        </button>
+        {IsLoggedIn(props.recipe) ? (
+          <button
+            type="button"
+            onClick={() => props.addFavorite(props.recipe.id, userNow)}
+          >
+            Favorite
+          </button>
+        ) : null}
       </section>
     </div>
   );
