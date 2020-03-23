@@ -45,18 +45,18 @@ const AddRecipeForm = props => {
               required
               onChange={handleFieldChange}
               id="name"
-              placeholder="RecipeName"
+              placeholder="name"
             />
-            <label htmlFor="description">Date: </label>
+            <label htmlFor="description">Description: </label>
 
             <input
               type="description"
               required
               onChange={handleFieldChange}
               id="description"
-              placeholder="RecipeDate"
+              placeholder="description"
             />
-            <label htmlFor="instructions">Location: </label>
+            <label htmlFor="instructions">Instructions: </label>
 
             <input
               type="text"
