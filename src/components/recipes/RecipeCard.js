@@ -1,4 +1,5 @@
 import React from "react";
+const userNow = JSON.parse(sessionStorage.getItem("userCredentials"));
 
 const RecipeCard = props => {
   const EditAndDeletePermission = recipe => {
@@ -39,7 +40,7 @@ const RecipeCard = props => {
         ) : null}
         <button
           type="button"
-          onClick={() => props.deleteRecipe(props.recipe.id)}
+          onClick={() => props.addFavorite(props.recipe.id, userNow)}
         >
           Favorite
         </button>

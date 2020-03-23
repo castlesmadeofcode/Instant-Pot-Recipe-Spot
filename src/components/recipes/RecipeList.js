@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import RecipeCard from "./RecipeCard";
 import RecipeManager from "../../modules/RecipeManager";
+import FavoriteManager from "../../modules/FavoriteManager";
 import "./../RecipeBook.css";
 
 const RecipesList = props => {
@@ -14,6 +15,12 @@ const RecipesList = props => {
     return RecipeManager.getAllRecipesByUser().then(recipesFromAPI => {
       setRecipes(recipesFromAPI.reverse());
     });
+  };
+
+  const addFavorite = (id, user) => {
+    FavoriteManager.post({ recipeId: id, userId: user }).then(() =>
+      getAllRecipes()
+    );
   };
 
   useEffect(() => {
@@ -45,6 +52,7 @@ const RecipesList = props => {
             key={recipe.id}
             recipe={recipe}
             deleteRecipe={deleteRecipe}
+            addFavorite={addFavorite}
             {...props}
           />
         ))}

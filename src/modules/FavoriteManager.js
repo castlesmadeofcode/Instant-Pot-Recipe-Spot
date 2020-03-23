@@ -15,5 +15,14 @@ export default {
     return fetch(`${remoteURL}/favorites/${id}`, {
       method: "DELETE"
     }).then(result => result.json());
+  },
+  post(newFavorite) {
+    return fetch(`${remoteURL}/favorites`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(newFavorite)
+    }).then(data => data.json());
   }
 };
