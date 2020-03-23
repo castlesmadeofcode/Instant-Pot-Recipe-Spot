@@ -1,8 +1,8 @@
 const remoteURL = "http://localhost:8088";
 
 export default {
-  getAllFavoritesByUser() {
-    return fetch(`${remoteURL}/favorites?_expand=user`).then(result =>
+  getFavoriteByRecipeId(id) {
+    return fetch(`${remoteURL}/favorites?recipeId=${id}`).then(result =>
       result.json()
     );
   },

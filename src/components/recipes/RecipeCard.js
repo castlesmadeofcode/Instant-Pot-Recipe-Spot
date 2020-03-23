@@ -1,7 +1,26 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import FavoriteManager from "../../modules/FavoriteManager";
 const userNow = JSON.parse(sessionStorage.getItem("userCredentials"));
 
 const RecipeCard = props => {
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  useEffect(() => {
+    isFavorited(props.recipe.id, userNow);
+  });
+
+  const isFavorited = (recipeId, userId) => {
+    FavoriteManager.getFavoriteByRecipeId(recipeId).then(favoritesFromAPI => {
+      const findUser = favoritesFromAPI.some(item => item.userId === userId);
+
+      if (findUser) {
+        setIsFavorite(true);
+      } else {
+        setIsFavorite(false);
+      }
+    });
+  };
+
   const IsLoggedIn = () => {
     const userNow = JSON.parse(sessionStorage.getItem("userCredentials"));
     if (userNow !== null) {
@@ -46,7 +65,7 @@ const RecipeCard = props => {
             Delete
           </button>
         ) : null}
-        {IsLoggedIn(props.recipe) ? (
+        {IsLoggedIn(props.recipe) && !isFavorite ? (
           <button
             type="button"
             onClick={() => props.addFavorite(props.recipe.id, userNow)}

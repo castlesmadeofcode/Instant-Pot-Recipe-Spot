@@ -8,19 +8,22 @@ const RecipesList = props => {
   const [recipes, setRecipes] = useState([]);
 
   const deleteRecipe = id => {
-    RecipeManager.delete(id).then(() => getAllRecipes());
+    RecipeManager.delete(id).then(() => {
+      getAllRecipes();
+    });
   };
 
   const getAllRecipes = () => {
-    return RecipeManager.getAllRecipesByUser().then(recipesFromAPI => {
+    RecipeManager.getAllRecipesWithUsers().then(recipesFromAPI => {
       setRecipes(recipesFromAPI.reverse());
+      console.log("bryan was right", recipesFromAPI);
     });
   };
 
   const addFavorite = (id, user) => {
-    FavoriteManager.post({ recipeId: id, userId: user }).then(() =>
-      getAllRecipes()
-    );
+    FavoriteManager.post({ recipeId: id, userId: user }).then(() => {
+      getAllRecipes();
+    });
   };
 
   useEffect(() => {
