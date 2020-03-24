@@ -9,6 +9,7 @@ const EditRecipeForm = props => {
     description: "",
     instructions: "",
     ingredients: "",
+    url: "",
     userId: userNow
   });
   const [isLoading, setIsLoading] = useState(false);
@@ -21,7 +22,6 @@ const EditRecipeForm = props => {
 
   const updateExistingRecipe = evt => {
     evt.preventDefault();
-    setIsLoading(true);
 
     const editedRecipe = {
       id: props.match.params.recipeId,
@@ -29,12 +29,25 @@ const EditRecipeForm = props => {
       description: recipe.description,
       instructions: recipe.instructions,
       ingredients: recipe.ingredients,
+      url: recipe.url,
       userId: userNow
     };
 
-    RecipeManager.update(editedRecipe).then(() =>
-      props.history.push("/recipes")
-    );
+    if (
+      recipe.name === "" ||
+      recipe.description === "" ||
+      recipe.instructions === "" ||
+      recipe.ingredients === "" ||
+      recipe.url === "" ||
+      recipe.userId === null
+    ) {
+      window.alert("Please login or fill out all the fields to continue");
+    } else {
+      setIsLoading(true);
+      RecipeManager.update(editedRecipe).then(() =>
+        props.history.push("/recipes")
+      );
+    }
   };
 
   useEffect(() => {
@@ -91,6 +104,17 @@ const EditRecipeForm = props => {
               onChange={handleFieldChange}
               id="ingredients"
               value={recipe.ingredients}
+            />
+
+            <label htmlFor="url"> Url: </label>
+
+            <input
+              type="text"
+              required
+              className="form-control"
+              onChange={handleFieldChange}
+              id="url"
+              value={recipe.url}
             />
           </div>
           <div className="alignRight">

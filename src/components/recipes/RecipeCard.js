@@ -42,11 +42,14 @@ const RecipeCard = props => {
   return (
     <div className="cards">
       <section className="cards-content">
-        <picture></picture>
+        <picture>
+          <img src={props.recipe.url} alt="Recipe Pic" />
+        </picture>
         <h3>
           Name: <span className="">{props.recipe.name}</span>
         </h3>
         <h3>Description: {props.recipe.description}</h3>
+
         <Link to={`/recipes/${props.recipe.id}`}>
           <button>Details</button>
         </Link>

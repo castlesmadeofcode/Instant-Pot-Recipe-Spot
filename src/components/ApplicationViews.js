@@ -75,6 +75,7 @@ const ApplicationViews = props => {
         }}
       />
       <Route
+        exact
         path="/recipes/:recipeId(\d+)"
         render={props => {
           return (

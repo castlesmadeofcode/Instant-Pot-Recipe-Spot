@@ -14,7 +14,9 @@ const FavoriteCard = props => {
   return (
     <div className="cards">
       <section className="cards-content">
-        <picture></picture>
+        <picture>
+          <img src={props.favorite.recipe.url} alt="Recipe Pic" />
+        </picture>
         <h3>
           name: <span className="">{props.favorite.recipe.name}</span>
         </h3>

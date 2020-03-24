@@ -8,7 +8,8 @@ const RecipeDetail = props => {
   const [recipe, setRecipe] = useState({
     name: "",
     instructions: "",
-    ingredients: ""
+    ingredients: "",
+    url: ""
   });
   const [isLoading, setIsLoading] = useState(true);
 
@@ -17,7 +18,8 @@ const RecipeDetail = props => {
       setRecipe({
         name: recipe.name,
         instructions: recipe.instructions,
-        ingredients: recipe.ingredients
+        ingredients: recipe.ingredients,
+        url: recipe.url
       });
       setIsLoading(false);
     });
@@ -26,6 +28,9 @@ const RecipeDetail = props => {
   return (
     <div className="card">
       <div className="card-content">
+        <picture>
+          <img src={recipe.url} alt="Recipe Pic" />
+        </picture>
         <h3>
           Name: <span style={{ color: "darkslategrey" }}>{recipe.name}</span>
         </h3>
