@@ -28,7 +28,6 @@ const AddRecipeForm = props => {
       recipe.description === "" ||
       recipe.instructions === "" ||
       recipe.ingredients === "" ||
-      recipe.img === "" ||
       recipe.url === "" ||
       recipe.userId === null
     ) {
