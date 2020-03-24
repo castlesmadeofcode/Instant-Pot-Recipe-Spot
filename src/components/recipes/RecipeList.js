@@ -16,7 +16,6 @@ const RecipesList = props => {
   const getAllRecipes = () => {
     RecipeManager.getAllRecipesWithUsers().then(recipesFromAPI => {
       setRecipes(recipesFromAPI.reverse());
-      console.log("bryan was right", recipesFromAPI);
     });
   };
 
