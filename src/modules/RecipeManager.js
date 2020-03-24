@@ -31,7 +31,7 @@ export default {
     }).then(data => data.json());
   },
 
-  getAllRecipesByUser() {
+  getAllRecipesWithUsers() {
     return fetch(`${remoteURL}/recipes?_expand=user`).then(result =>
       result.json()
     );

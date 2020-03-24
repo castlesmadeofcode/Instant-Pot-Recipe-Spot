@@ -1,18 +1,27 @@
 import React, { useState, useEffect } from "react";
 import RecipeCard from "./RecipeCard";
 import RecipeManager from "../../modules/RecipeManager";
+import FavoriteManager from "../../modules/FavoriteManager";
 import "./../RecipeBook.css";
 
 const RecipesList = props => {
   const [recipes, setRecipes] = useState([]);
 
   const deleteRecipe = id => {
-    RecipeManager.delete(id).then(() => getAllRecipes());
+    RecipeManager.delete(id).then(() => {
+      getAllRecipes();
+    });
   };
 
   const getAllRecipes = () => {
-    return RecipeManager.getAllRecipesByUser().then(recipesFromAPI => {
+    RecipeManager.getAllRecipesWithUsers().then(recipesFromAPI => {
       setRecipes(recipesFromAPI.reverse());
+    });
+  };
+
+  const addFavorite = (id, user) => {
+    FavoriteManager.post({ recipeId: id, userId: user }).then(() => {
+      getAllRecipes();
     });
   };
 
@@ -45,6 +54,7 @@ const RecipesList = props => {
             key={recipe.id}
             recipe={recipe}
             deleteRecipe={deleteRecipe}
+            addFavorite={addFavorite}
             {...props}
           />
         ))}

@@ -1,6 +1,34 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import FavoriteManager from "../../modules/FavoriteManager";
+const userNow = JSON.parse(sessionStorage.getItem("userCredentials"));
 
 const RecipeCard = props => {
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  useEffect(() => {
+    isFavorited(props.recipe.id, userNow);
+  });
+
+  const isFavorited = (recipeId, userId) => {
+    FavoriteManager.getFavoriteByRecipeId(recipeId).then(favoritesFromAPI => {
+      const findUser = favoritesFromAPI.some(item => item.userId === userId);
+
+      if (findUser) {
+        setIsFavorite(true);
+      } else {
+        setIsFavorite(false);
+      }
+    });
+  };
+
+  const IsLoggedIn = () => {
+    const userNow = JSON.parse(sessionStorage.getItem("userCredentials"));
+    if (userNow !== null) {
+      return true;
+    } else {
+      return false;
+    }
+  };
   const EditAndDeletePermission = recipe => {
     const userNow = JSON.parse(sessionStorage.getItem("userCredentials"));
     if (recipe.userId === userNow) {
@@ -37,12 +65,14 @@ const RecipeCard = props => {
             Delete
           </button>
         ) : null}
-        <button
-          type="button"
-          onClick={() => props.deleteRecipe(props.recipe.id)}
-        >
-          Favorite
-        </button>
+        {IsLoggedIn(props.recipe) && !isFavorite ? (
+          <button
+            type="button"
+            onClick={() => props.addFavorite(props.recipe.id, userNow)}
+          >
+            Favorite
+          </button>
+        ) : null}
       </section>
     </div>
   );
