@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const FavoriteCard = props => {
   const EditAndDeletePermission = favorite => {
@@ -13,12 +14,16 @@ const FavoriteCard = props => {
   return (
     <div className="cards">
       <section className="cards-content">
-        <picture></picture>
+        <picture>
+          <img src={props.favorite.recipe.url} alt="Recipe Pic" />
+        </picture>
         <h3>
           name: <span className="">{props.favorite.recipe.name}</span>
         </h3>
         <h3>description: {props.favorite.recipe.description}</h3>
-        <h3>instructions: {props.favorite.recipe.instructions}</h3>
+        <Link to={`/recipes/${props.favorite.recipe.id}`}>
+          <button>Details</button>
+        </Link>
 
         {/* {EditAndDeletePermission(props.favorite) ? (
           <button
@@ -35,7 +40,7 @@ const FavoriteCard = props => {
             type="button"
             onClick={() => props.deleteFavorite(props.favorite.id)}
           >
-            Delete
+            Remove
           </button>
         ) : null}
       </section>

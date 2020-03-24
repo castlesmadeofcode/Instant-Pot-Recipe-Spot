@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import FavoriteManager from "../../modules/FavoriteManager";
 const userNow = JSON.parse(sessionStorage.getItem("userCredentials"));
 
@@ -41,12 +42,17 @@ const RecipeCard = props => {
   return (
     <div className="cards">
       <section className="cards-content">
-        <picture></picture>
+        <picture>
+          <img src={props.recipe.url} alt="Recipe Pic" />
+        </picture>
         <h3>
           Name: <span className="">{props.recipe.name}</span>
         </h3>
         <h3>Description: {props.recipe.description}</h3>
-        <h3>Instructions: {props.recipe.instructions}</h3>
+
+        <Link to={`/recipes/${props.recipe.id}`}>
+          <button>Details</button>
+        </Link>
         {EditAndDeletePermission(props.recipe) ? (
           <button
             type="button"

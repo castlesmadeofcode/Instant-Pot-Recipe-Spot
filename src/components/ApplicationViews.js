@@ -6,6 +6,7 @@ import RecipeList from "./recipes/RecipeList";
 import AddRecipeForm from "./recipes/AddRecipeForm";
 import EditRecipeForm from "./recipes/EditRecipeForm";
 import FavoriteList from "./favorites/FavoriteList";
+import RecipeDetail from "./recipes/RecipeDetail";
 
 const ApplicationViews = props => {
   const currentUser = props.currentUser;
@@ -71,6 +72,18 @@ const ApplicationViews = props => {
           } else {
             return <Redirect to="/login" />;
           }
+        }}
+      />
+      <Route
+        exact
+        path="/recipes/:recipeId(\d+)"
+        render={props => {
+          return (
+            <RecipeDetail
+              recipeId={parseInt(props.match.params.recipeId)}
+              {...props}
+            />
+          );
         }}
       />
     </React.Fragment>
