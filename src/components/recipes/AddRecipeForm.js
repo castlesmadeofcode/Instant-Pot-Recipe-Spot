@@ -8,6 +8,7 @@ const AddRecipeForm = props => {
     name: "",
     description: "",
     instructions: "",
+    ingredients: "",
     userId: userNow
   });
   const [isLoading, setIsLoading] = useState(false);
@@ -24,6 +25,7 @@ const AddRecipeForm = props => {
       recipe.name === "" ||
       recipe.description === "" ||
       recipe.instructions === "" ||
+      recipe.ingredients === "" ||
       recipe.userId === null
     ) {
       window.alert("Please login or fill out all the fields to continue");
@@ -64,6 +66,16 @@ const AddRecipeForm = props => {
               onChange={handleFieldChange}
               id="instructions"
               placeholder="instructions"
+            />
+
+            <label htmlFor="ingredients">Ingredients: </label>
+
+            <input
+              type="text"
+              required
+              onChange={handleFieldChange}
+              id="ingredients"
+              placeholder="ingredients"
             />
           </div>
           <div className="alignRight">

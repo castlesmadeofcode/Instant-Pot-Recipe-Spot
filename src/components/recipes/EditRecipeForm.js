@@ -8,6 +8,7 @@ const EditRecipeForm = props => {
     name: "",
     description: "",
     instructions: "",
+    ingredients: "",
     userId: userNow
   });
   const [isLoading, setIsLoading] = useState(false);
@@ -27,6 +28,7 @@ const EditRecipeForm = props => {
       name: recipe.name,
       description: recipe.description,
       instructions: recipe.instructions,
+      ingredients: recipe.ingredients,
       userId: userNow
     };
 
@@ -78,6 +80,17 @@ const EditRecipeForm = props => {
               onChange={handleFieldChange}
               id="instructions"
               value={recipe.instructions}
+            />
+
+            <label htmlFor="ingredients">Ingredients: </label>
+
+            <input
+              type="text"
+              required
+              className="form-control"
+              onChange={handleFieldChange}
+              id="ingredients"
+              value={recipe.ingredients}
             />
           </div>
           <div className="alignRight">

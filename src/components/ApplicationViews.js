@@ -78,7 +78,10 @@ const ApplicationViews = props => {
         path="/recipes/:recipeId(\d+)"
         render={props => {
           return (
-            <RecipeDetail recipeId={parseInt(props.match.params.recipeId)} />
+            <RecipeDetail
+              recipeId={parseInt(props.match.params.recipeId)}
+              {...props}
+            />
           );
         }}
       />
