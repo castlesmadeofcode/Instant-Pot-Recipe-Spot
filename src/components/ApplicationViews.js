@@ -7,7 +7,6 @@ import AddRecipeForm from "./recipes/AddRecipeForm";
 import EditRecipeForm from "./recipes/EditRecipeForm";
 import FavoriteList from "./favorites/FavoriteList";
 import RecipeDetail from "./recipes/RecipeDetail";
-import SearchForm from "./recipes/SearchRecipes";
 
 const ApplicationViews = props => {
   const currentUser = props.currentUser;
@@ -87,7 +86,7 @@ const ApplicationViews = props => {
           );
         }}
       />
-     
+    </React.Fragment>
   );
 };
 
