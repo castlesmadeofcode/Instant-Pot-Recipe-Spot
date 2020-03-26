@@ -35,7 +35,7 @@ const RecipeDetail = props => {
           Name: <span style={{ color: "darkslategrey" }}>{recipe.name}</span>
         </h3>
         <p>Instructions: {recipe.instructions}</p>
-        <p>ingredients: {recipe.ingredients}</p>
+        <p>Ingredients: {recipe.ingredients}</p>
         <button onClick={() => history.goBack()}>Back</button>
       </div>
     </div>

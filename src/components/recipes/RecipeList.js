@@ -3,9 +3,11 @@ import RecipeCard from "./RecipeCard";
 import RecipeManager from "../../modules/RecipeManager";
 import FavoriteManager from "../../modules/FavoriteManager";
 import "./../RecipeBook.css";
+import FilterRecipes from "./FilteredRecipes";
 
 const RecipesList = props => {
   const [recipes, setRecipes] = useState([]);
+  const [filteredRecipes, setFilteredRecipes] = useState([]);
 
   const deleteRecipe = id => {
     RecipeManager.delete(id).then(() => {
@@ -16,6 +18,7 @@ const RecipesList = props => {
   const getAllRecipes = () => {
     RecipeManager.getAllRecipesWithUsers().then(recipesFromAPI => {
       setRecipes(recipesFromAPI.reverse());
+      setFilteredRecipes(recipesFromAPI);
     });
   };
 
@@ -31,6 +34,12 @@ const RecipesList = props => {
 
   return (
     <>
+      <FilterRecipes
+        recipes={recipes}
+        filteredRecipes={filteredRecipes}
+        setFilteredRecipes={setFilteredRecipes}
+      />
+
       <section className="section-content">
         {props.currentUser ? (
           <button
@@ -49,7 +58,7 @@ const RecipesList = props => {
         )}
       </section>
       <div className="containers-cards">
-        {recipes.map(recipe => (
+        {filteredRecipes.map(recipe => (
           <RecipeCard
             key={recipe.id}
             recipe={recipe}
