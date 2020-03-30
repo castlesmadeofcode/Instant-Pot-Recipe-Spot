@@ -10,11 +10,8 @@ const FavoritesList = props => {
     FavoriteManager.delete(id).then(() => getAllFavorites());
   };
 
-  // const userNow = JSON.parse(sessionStorage.getItem("userCredentials"));
-
   const getAllFavorites = () => {
     const userNow = JSON.parse(sessionStorage.getItem("userCredentials"));
-
     return FavoriteManager.getAllFavoritesByRecipe().then(
       favoritesFromDatabase => {
         const userFavorites = favoritesFromDatabase.filter(

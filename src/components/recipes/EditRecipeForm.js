@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import RecipeManager from "../../modules/RecipeManager";
 
-const userNow = JSON.parse(sessionStorage.getItem("userCredentials"));
-
 const EditRecipeForm = props => {
+  const userNow = JSON.parse(sessionStorage.getItem("userCredentials"));
+
   const [recipe, setRecipe] = useState({
     name: "",
     description: "",
