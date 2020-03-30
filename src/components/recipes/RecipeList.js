@@ -22,8 +22,9 @@ const RecipesList = props => {
     });
   };
 
-  const addFavorite = (id, user) => {
-    FavoriteManager.post({ recipeId: id, userId: user }).then(() => {
+  const addFavorite = id => {
+    const userId = JSON.parse(sessionStorage.getItem("userCredentials"));
+    FavoriteManager.post({ recipeId: id, userId: userId }).then(() => {
       getAllRecipes();
     });
   };

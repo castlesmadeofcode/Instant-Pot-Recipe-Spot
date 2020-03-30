@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import FavoriteManager from "../../modules/FavoriteManager";
-const userNow = JSON.parse(sessionStorage.getItem("userCredentials"));
 
 const RecipeCard = props => {
   const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
-    isFavorited(props.recipe.id, userNow);
+    isFavorited(props.recipe.id);
   });
 
-  const isFavorited = (recipeId, userId) => {
+  const isFavorited = recipeId => {
+    const userId = JSON.parse(sessionStorage.getItem("userCredentials"));
     FavoriteManager.getFavoriteByRecipeId(recipeId).then(favoritesFromAPI => {
       const findUser = favoritesFromAPI.some(item => item.userId === userId);
 
@@ -74,7 +74,7 @@ const RecipeCard = props => {
         {IsLoggedIn(props.recipe) && !isFavorite ? (
           <button
             type="button"
-            onClick={() => props.addFavorite(props.recipe.id, userNow)}
+            onClick={() => props.addFavorite(props.recipe.id)}
           >
             Favorite
           </button>
