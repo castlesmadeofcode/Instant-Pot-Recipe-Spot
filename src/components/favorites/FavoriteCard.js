@@ -24,17 +24,6 @@ const FavoriteCard = props => {
         <Link to={`/recipes/${props.favorite.recipe.id}`}>
           <button>Details</button>
         </Link>
-
-        {/* {EditAndDeletePermission(props.favorite) ? (
-          <button
-            type="button"
-            onClick={() =>
-              props.history.push(`/recipes/${props.favorite.id}/edit`)
-            }
-          >
-            Edit
-          </button>
-        ) : null} */}
         {EditAndDeletePermission(props.favorite) ? (
           <button
             type="button"
