@@ -4,6 +4,7 @@ import RecipeManager from "../../modules/RecipeManager";
 import FavoriteManager from "../../modules/FavoriteManager";
 import "./../RecipeBook.css";
 import FilterRecipes from "./FilteredRecipes";
+import AddIcon from "@material-ui/icons/Add";
 
 const RecipesList = props => {
   const [recipes, setRecipes] = useState([]);
@@ -50,7 +51,8 @@ const RecipesList = props => {
               props.history.push("/recipes/new");
             }}
           >
-            New Recipe
+            <AddIcon fontSize="small"></AddIcon>
+            {/* New Recipe */}
           </button>
         ) : (
           <p>
@@ -58,7 +60,7 @@ const RecipesList = props => {
           </p>
         )}
       </section>
-      <div className="containers-cards">
+      <div className="container-cards">
         {filteredRecipes.map(recipe => (
           <RecipeCard
             key={recipe.id}

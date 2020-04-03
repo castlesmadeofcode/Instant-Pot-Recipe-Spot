@@ -1,5 +1,19 @@
 import React, { useState } from "react";
 import RecipeManager from "../../modules/RecipeManager";
+import { makeStyles } from "@material-ui/core/styles";
+import TextField from "@material-ui/core/TextField";
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    display: "flex",
+    flexWrap: "wrap"
+  },
+  textField: {
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(1),
+    width: "25ch"
+  }
+}));
 
 const AddRecipeForm = props => {
   const userNow = JSON.parse(sessionStorage.getItem("userCredentials"));
@@ -13,6 +27,7 @@ const AddRecipeForm = props => {
     userId: userNow
   });
   const [isLoading, setIsLoading] = useState(false);
+  const classes = useStyles();
 
   const handleFieldChange = evt => {
     const stateToChange = { ...recipe };
@@ -42,62 +57,80 @@ const AddRecipeForm = props => {
     <>
       <form>
         <fieldset>
-          <div className="formgrid">
-            <label htmlFor="name">Name: </label>
-            <input
-              type="text"
-              required
-              onChange={handleFieldChange}
-              id="name"
-              placeholder="name"
-            />
-            <label htmlFor="description">Description: </label>
+          <div className={classes.root}>
+            <div className="formgrid">
+              <TextField
+                onChange={handleFieldChange}
+                id="name"
+                label="Name"
+                style={{ margin: 8 }}
+                placeholder=""
+                fullWidth
+                margin="normal"
+                InputLabelProps={{
+                  shrink: true
+                }}
+              />
 
-            <input
-              type="description"
-              required
-              onChange={handleFieldChange}
-              id="description"
-              placeholder="description"
-            />
-            <label htmlFor="instructions">Instructions: </label>
+              <TextField
+                onChange={handleFieldChange}
+                id="description"
+                label="Description"
+                style={{ margin: 8 }}
+                placeholder=""
+                fullWidth
+                margin="normal"
+                InputLabelProps={{
+                  shrink: true
+                }}
+              />
+              <TextField
+                onChange={handleFieldChange}
+                id="instructions"
+                label="Instructions"
+                style={{ margin: 8 }}
+                placeholder=""
+                fullWidth
+                margin="normal"
+                InputLabelProps={{
+                  shrink: true
+                }}
+              />
+              <TextField
+                onChange={handleFieldChange}
+                id="ingredients"
+                label="Ingredients"
+                style={{ margin: 8 }}
+                placeholder=""
+                fullWidth
+                margin="normal"
+                InputLabelProps={{
+                  shrink: true
+                }}
+              />
+              <TextField
+                onChange={handleFieldChange}
+                id="url"
+                label="Url"
+                style={{ margin: 8 }}
+                placeholder=""
+                fullWidth
+                margin="normal"
+                InputLabelProps={{
+                  shrink: true
+                }}
+              />
 
-            <input
-              type="text"
-              required
-              onChange={handleFieldChange}
-              id="instructions"
-              placeholder="instructions"
-            />
-
-            <label htmlFor="ingredients">Ingredients: </label>
-
-            <input
-              type="text"
-              required
-              onChange={handleFieldChange}
-              id="ingredients"
-              placeholder="ingredients"
-            />
-
-            <label htmlFor="url">Url: </label>
-
-            <input
-              type="text"
-              required
-              onChange={handleFieldChange}
-              id="url"
-              placeholder="url"
-            />
-          </div>
-          <div className="alignRight">
-            <button
-              type="button"
-              disabled={isLoading}
-              onClick={constructNewRecipe}
-            >
-              Submit
-            </button>
+              <div className="alignRight">
+                <button
+                  type="button"
+                  disabled={isLoading}
+                  onClick={constructNewRecipe}
+                >
+                  Submit
+                </button>
+              </div>
+            </div>
           </div>
         </fieldset>
       </form>
