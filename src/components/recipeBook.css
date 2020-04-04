@@ -3,3 +3,11 @@
   flex-wrap: wrap;
   justify-content: space-between;
 }
+
+body {
+  margin: 0;
+  font-family: cursive;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f5f5f5;
+}

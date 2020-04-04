@@ -3,7 +3,7 @@ import { withRouter } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import "./Navbar.css";
 
-const NavBar = props => {
+const NavBar = (props) => {
   const manageLogout = () => {
     props.clearAsUser();
     props.history.push("/login");
@@ -21,7 +21,7 @@ const NavBar = props => {
               to="/recipes"
               activeStyle={{
                 fontWeight: "bold",
-                color: "black"
+                color: "black",
               }}
             >
               Recipes
@@ -34,7 +34,7 @@ const NavBar = props => {
               to="/favorites"
               activeStyle={{
                 fontWeight: "bold",
-                color: "black"
+                color: "black",
               }}
             >
               Favorites
@@ -48,7 +48,7 @@ const NavBar = props => {
                 to="/login"
                 activeStyle={{
                   fontWeight: "bold",
-                  color: "black"
+                  color: "black",
                 }}
               >
                 Login

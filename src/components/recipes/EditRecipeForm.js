@@ -1,7 +1,21 @@
 import React, { useState, useEffect } from "react";
 import RecipeManager from "../../modules/RecipeManager";
+import { makeStyles } from "@material-ui/core/styles";
+import TextField from "@material-ui/core/TextField";
 
-const EditRecipeForm = props => {
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: "flex",
+    flexWrap: "wrap",
+  },
+  textField: {
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(1),
+    width: "25ch",
+  },
+}));
+
+const EditRecipeForm = (props) => {
   const userNow = JSON.parse(sessionStorage.getItem("userCredentials"));
 
   const [recipe, setRecipe] = useState({
@@ -10,17 +24,19 @@ const EditRecipeForm = props => {
     instructions: "",
     ingredients: "",
     url: "",
-    userId: userNow
+    userId: userNow,
   });
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleFieldChange = evt => {
+  const classes = useStyles();
+
+  const handleFieldChange = (evt) => {
     const stateToChange = { ...recipe };
     stateToChange[evt.target.id] = evt.target.value;
     setRecipe(stateToChange);
   };
 
-  const updateExistingRecipe = evt => {
+  const updateExistingRecipe = (evt) => {
     evt.preventDefault();
 
     const editedRecipe = {
@@ -30,7 +46,7 @@ const EditRecipeForm = props => {
       instructions: recipe.instructions,
       ingredients: recipe.ingredients,
       url: recipe.url,
-      userId: userNow
+      userId: userNow,
     };
 
     if (
@@ -51,7 +67,7 @@ const EditRecipeForm = props => {
   };
 
   useEffect(() => {
-    RecipeManager.get(props.match.params.recipeId).then(recipe => {
+    RecipeManager.get(props.match.params.recipeId).then((recipe) => {
       const recipeToChange = { ...recipe };
       setRecipe(recipeToChange);
       setIsLoading(false);
@@ -62,70 +78,85 @@ const EditRecipeForm = props => {
     <>
       <form>
         <fieldset>
-          <div className="formgrid">
-            <label htmlFor="name">Recipe name: </label>
+          <div className={classes.root}>
+            <div className="formgrid">
+              <TextField
+                onChange={handleFieldChange}
+                id="name"
+                value={recipe.name}
+                label="Name"
+                style={{ margin: 8 }}
+                placeholder=""
+                fullWidth
+                margin="normal"
+                InputLabelProps={{
+                  shrink: true,
+                }}
+              />
 
-            <input
-              type="text"
-              required
-              className="form-control"
-              onChange={handleFieldChange}
-              id="name"
-              value={recipe.name}
-            />
-            <label htmlFor="description">Description: </label>
-
-            <input
-              type="description"
-              required
-              className="form-control"
-              onChange={handleFieldChange}
-              id="description"
-              value={recipe.description}
-            />
-
-            <label htmlFor="instructions">Instructions: </label>
-
-            <input
-              type="text"
-              required
-              className="form-control"
-              onChange={handleFieldChange}
-              id="instructions"
-              value={recipe.instructions}
-            />
-
-            <label htmlFor="ingredients">Ingredients: </label>
-
-            <input
-              type="text"
-              required
-              className="form-control"
-              onChange={handleFieldChange}
-              id="ingredients"
-              value={recipe.ingredients}
-            />
-
-            <label htmlFor="url"> Url: </label>
-
-            <input
-              type="text"
-              required
-              className="form-control"
-              onChange={handleFieldChange}
-              id="url"
-              value={recipe.url}
-            />
-          </div>
-          <div className="alignRight">
-            <button
-              type="button"
-              disabled={isLoading}
-              onClick={updateExistingRecipe}
-              className="btn btn-primary"
-            >
-              Submit
-            </button>
+              <TextField
+                onChange={handleFieldChange}
+                id="description"
+                value={recipe.description}
+                label="Description"
+                style={{ margin: 8 }}
+                placeholder=""
+                fullWidth
+                margin="normal"
+                InputLabelProps={{
+                  shrink: true,
+                }}
+              />
+              <TextField
+                onChange={handleFieldChange}
+                id="instructions"
+                value={recipe.instructions}
+                label="Instructions"
+                style={{ margin: 8 }}
+                placeholder=""
+                fullWidth
+                margin="normal"
+                InputLabelProps={{
+                  shrink: true,
+                }}
+              />
+              <TextField
+                onChange={handleFieldChange}
+                id="ingredients"
+                value={recipe.ingredients}
+                label="Ingredients"
+                style={{ margin: 8 }}
+                placeholder=""
+                fullWidth
+                margin="normal"
+                InputLabelProps={{
+                  shrink: true,
+                }}
+              />
+              <TextField
+                onChange={handleFieldChange}
+                id="url"
+                value={recipe.url}
+                label="Url"
+                style={{ margin: 8 }}
+                placeholder=""
+                fullWidth
+                margin="normal"
+                InputLabelProps={{
+                  shrink: true,
+                }}
+              />
+              <div className="alignRight">
+                <button
+                  type="button"
+                  disabled={isLoading}
+                  onClick={updateExistingRecipe}
+                  className="btn btn-primary"
+                >
+                  Submit
+                </button>
+              </div>
+            </div>
           </div>
         </fieldset>
       </form>
