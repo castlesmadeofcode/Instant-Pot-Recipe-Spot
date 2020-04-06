@@ -2,20 +2,21 @@ import React, { useState } from "react";
 import RecipeManager from "../../modules/RecipeManager";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
-    flexWrap: "wrap"
+    flexWrap: "wrap",
   },
   textField: {
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
-    width: "25ch"
-  }
+    width: "25ch",
+  },
 }));
 
-const AddRecipeForm = props => {
+const AddRecipeForm = (props) => {
   const userNow = JSON.parse(sessionStorage.getItem("userCredentials"));
   const [recipe, setRecipe] = useState({
     name: "",
@@ -24,18 +25,18 @@ const AddRecipeForm = props => {
     ingredients: "",
     img: "",
     url: "",
-    userId: userNow
+    userId: userNow,
   });
   const [isLoading, setIsLoading] = useState(false);
   const classes = useStyles();
 
-  const handleFieldChange = evt => {
+  const handleFieldChange = (evt) => {
     const stateToChange = { ...recipe };
     stateToChange[evt.target.id] = evt.target.value;
     setRecipe(stateToChange);
   };
 
-  const constructNewRecipe = evt => {
+  const constructNewRecipe = (evt) => {
     evt.preventDefault();
     if (
       recipe.name === "" ||
@@ -68,7 +69,7 @@ const AddRecipeForm = props => {
                 fullWidth
                 margin="normal"
                 InputLabelProps={{
-                  shrink: true
+                  shrink: true,
                 }}
               />
 
@@ -81,7 +82,7 @@ const AddRecipeForm = props => {
                 fullWidth
                 margin="normal"
                 InputLabelProps={{
-                  shrink: true
+                  shrink: true,
                 }}
               />
               <TextField
@@ -93,7 +94,7 @@ const AddRecipeForm = props => {
                 fullWidth
                 margin="normal"
                 InputLabelProps={{
-                  shrink: true
+                  shrink: true,
                 }}
               />
               <TextField
@@ -105,7 +106,7 @@ const AddRecipeForm = props => {
                 fullWidth
                 margin="normal"
                 InputLabelProps={{
-                  shrink: true
+                  shrink: true,
                 }}
               />
               <TextField
@@ -117,18 +118,21 @@ const AddRecipeForm = props => {
                 fullWidth
                 margin="normal"
                 InputLabelProps={{
-                  shrink: true
+                  shrink: true,
                 }}
               />
 
               <div className="alignRight">
-                <button
-                  type="button"
+                <Button
+                  type="submit"
+                  // fullWidth
+                  variant="contained"
+                  color="primary"
                   disabled={isLoading}
                   onClick={constructNewRecipe}
                 >
                   Submit
-                </button>
+                </Button>
               </div>
             </div>
           </div>

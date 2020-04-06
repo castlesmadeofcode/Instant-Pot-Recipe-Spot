@@ -5,7 +5,22 @@ import FavoriteManager from "../../modules/FavoriteManager";
 import "../RecipeBook.css";
 import FilterRecipes from "./FilteredRecipes";
 import AddIcon from "@material-ui/icons/Add";
+import Box from "@material-ui/core/Box";
+import Typography from "@material-ui/core/Typography";
+import Link from "@material-ui/core/Link";
 
+function Copyright() {
+  return (
+    <Typography variant="body2" color="textSecondary" align="center">
+      {"Copyright © "}
+      <Link color="inherit" href="http://localhost:3000/">
+        Instant Pot Recipe Spot
+      </Link>{" "}
+      {new Date().getFullYear()}
+      {"."}
+    </Typography>
+  );
+}
 const RecipesList = (props) => {
   const [recipes, setRecipes] = useState([]);
   const [filteredRecipes, setFilteredRecipes] = useState([]);
@@ -71,6 +86,9 @@ const RecipesList = (props) => {
           />
         ))}
       </div>
+      <Box mt={8}>
+        <Copyright />
+      </Box>
     </>
   );
 };

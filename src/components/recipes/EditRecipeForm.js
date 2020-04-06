@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import RecipeManager from "../../modules/RecipeManager";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -147,14 +148,16 @@ const EditRecipeForm = (props) => {
                 }}
               />
               <div className="alignRight">
-                <button
-                  type="button"
+                <Button
+                  type="submit"
+                  // fullWidth
+                  variant="contained"
+                  color="primary"
                   disabled={isLoading}
                   onClick={updateExistingRecipe}
-                  className="btn btn-primary"
                 >
                   Submit
-                </button>
+                </Button>
               </div>
             </div>
           </div>
