@@ -67,7 +67,6 @@ const RecipesList = (props) => {
             }}
           >
             <AddIcon fontSize="small"></AddIcon>
-            {/* New Recipe */}
           </button>
         ) : (
           <p>
