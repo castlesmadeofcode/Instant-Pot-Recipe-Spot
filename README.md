@@ -1,3 +1,5 @@
+Inspired by a love of quick cooking, and an annoyance of searching the endless void of the web for a decent recipe, Instant Pot Recipe Spot is a single-page application that allows recipe lovers to create new recipes, search for recipes, and add recipes to their own personalized favorites page
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
